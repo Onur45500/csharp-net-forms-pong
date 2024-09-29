@@ -7,7 +7,27 @@ namespace csharp_net_forms_pong
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void GameTimerEvent(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KeyIsDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void KeyIsUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void CheckCollision(PictureBox PicOne, PictureBox PicTwo, int offset)
+        {
+
+        }
+
+        private void GameOver(string message)
         {
 
         }
