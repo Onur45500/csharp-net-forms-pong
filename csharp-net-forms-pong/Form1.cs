@@ -26,12 +26,26 @@ namespace csharp_net_forms_pong
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                goUp = true;
+            }
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = false;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                goUp = false;
+            }
         }
 
         private void CheckCollision(PictureBox PicOne, PictureBox PicTwo, int offset)
