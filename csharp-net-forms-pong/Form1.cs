@@ -50,7 +50,31 @@ namespace csharp_net_forms_pong
 
         private void CheckCollision(PictureBox PicOne, PictureBox PicTwo, int offset)
         {
+            if(PicOne.Bounds.IntersectsWith(PicTwo.Bounds))
+            {
+                PicOne.Left = offset;
 
+                int x = j[rand.Next(j.Length)];
+                int y = j[rand.Next(j.Length)];
+
+                if(ballXSpeed < 0)
+                {
+                    ballXSpeed = x;
+                }
+                else
+                {
+                    ballXSpeed = -x;
+                }
+
+                if(ballYSpeed < 0)
+                {
+                    ballYSpeed = -y;
+                }
+                else
+                {
+                    ballYSpeed = y;
+                }
+            }
         }
 
         private void GameOver(string message)
