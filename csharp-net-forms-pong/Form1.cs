@@ -11,6 +11,9 @@ namespace csharp_net_forms_pong
         int playerScore = 0;
         int computerScore = 0;
         int playerSpeed = 8;
+        int[] i = { 5, 6, 7, 8, 9 };
+        int[] l = { 9, 10, 11, 12, 13 };
+
         public Form1()
         {
             InitializeComponent();
