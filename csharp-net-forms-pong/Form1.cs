@@ -79,7 +79,13 @@ namespace csharp_net_forms_pong
 
         private void GameOver(string message)
         {
-
+            GameTimer.Stop();
+            MessageBox.Show(message, "");
+            computerScore = 0;
+            playerScore = 0;
+            ballXSpeed = ballYSpeed = 4;
+            computerSpeedChange = 50;
+            GameTimer.Start();
         }
     }
 }
