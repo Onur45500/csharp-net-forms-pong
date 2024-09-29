@@ -46,7 +46,6 @@
             Player.Size = new Size(30, 120);
             Player.TabIndex = 0;
             Player.TabStop = false;
-            Player.Click += pictureBox1_Click;
             // 
             // Computer
             // 
@@ -56,7 +55,6 @@
             Computer.Size = new Size(30, 120);
             Computer.TabIndex = 1;
             Computer.TabStop = false;
-            Computer.Click += Computer_Click;
             // 
             // Ball
             // 
