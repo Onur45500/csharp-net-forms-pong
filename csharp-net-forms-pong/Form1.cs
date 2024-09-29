@@ -6,5 +6,10 @@ namespace csharp_net_forms_pong
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

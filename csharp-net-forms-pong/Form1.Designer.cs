@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            Player = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)Player).BeginInit();
+            SuspendLayout();
+            // 
+            // Player
+            // 
+            Player.BackColor = SystemColors.ControlLight;
+            Player.Location = new Point(26, 101);
+            Player.Name = "Player";
+            Player.Size = new Size(125, 62);
+            Player.TabIndex = 0;
+            Player.TabStop = false;
+            Player.Click += pictureBox1_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlDarkDark;
+            ClientSize = new Size(800, 450);
+            Controls.Add(Player);
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)Player).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox Player;
     }
 }
