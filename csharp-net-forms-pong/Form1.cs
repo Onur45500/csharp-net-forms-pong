@@ -1,56 +1,58 @@
+using Microsoft.VisualBasic.Devices;
+using System.Numerics;
+
 namespace csharp_net_forms_pong
 {
     public partial class Form1 : Form
     {
-        int ballXSpeed = 4;
-        int ballYSpeed = 4;
+        int BallXspeed = 4;
+        int BallYspeed = 4;
         int speed = 2;
         Random rand = new Random();
         bool goDown, goUp;
-        int computerSpeedChange = 50;
-        int playerScore = 0;
-        int computerScore = 0;
-        int playerSpeed = 8;
-        int[] i = { 5, 6, 7, 8, 9 };
-        int[] l = { 9, 10, 11, 12, 13 };
+        int Computer_speed_change = 50;
+        int PlayerScore = 0;
+        int ComputerScore = 0;
+        int PlayerSpeed = 8;
+        int[] i = { 5, 6, 8, 9 };
+        int[] j = { 10, 9, 8, 11, 12 };
 
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void GameTimerEvent(object sender, EventArgs e)
         {
-            Ball.Top -= ballYSpeed;
-            Ball.Left -= ballXSpeed;
-
-            this.Text = "Player score: " + playerScore + " -- Computer Score: " + computerScore;
-
-            if(Ball.Top < 0 || Ball.Bottom > this.ClientSize.Height)
+            Ball.Top -= BallYspeed;
+            Ball.Left -= BallXspeed;
+            this.Text = "Player Score: " + PlayerScore + " -- Computer Score: " + ComputerScore;
+            if (Ball.Top < 0 || Ball.Bottom > this.ClientSize.Height)
             {
-                ballYSpeed = -ballYSpeed;
+                BallYspeed = -BallYspeed;
             }
-            if(Ball.Left < -2)
+            if (Ball.Left < -2)
             {
                 Ball.Left = 300;
-                ballXSpeed = -ballXSpeed;
-                computerScore++;
+                BallXspeed = -BallXspeed;
+                ComputerScore++;
             }
-            if(Ball.Right > this.ClientSize.Width + 2)
+            if (Ball.Right > this.ClientSize.Width + 2)
             {
                 Ball.Left = 300;
-                ballXSpeed = -ballXSpeed;
-                playerScore++;
+                BallXspeed = -BallXspeed;
+                PlayerScore++;
             }
-            if(Computer.Top <= 1)
+            if (Computer.Top <= 1)
             {
                 Computer.Top = 0;
             }
-            else if(Computer.Bottom >= this.ClientSize.Height)
+            else if (Computer.Bottom >= this.ClientSize.Height)
             {
                 Computer.Top = this.ClientSize.Height - Computer.Height;
             }
-            if(Ball.Top < Computer.Top + (Computer.Height/2) && Ball.Left > 300)
+            if (Ball.Top < Computer.Top + (Computer.Height / 2) && Ball.Left > 300)
             {
                 Computer.Top -= speed;
             }
@@ -58,38 +60,30 @@ namespace csharp_net_forms_pong
             {
                 Computer.Top += speed;
             }
-
-            computerSpeedChange -= 1;
-
-            if(computerSpeedChange < 0)
+            Computer_speed_change -= 1;
+            if (Computer_speed_change < 0)
             {
                 speed = i[rand.Next(i.Length)];
-                computerSpeedChange = 50;
+                Computer_speed_change = 50;
             }
-
-            if(goDown && Player.Top + Player.Height < this.ClientSize.Height)
+            if (goDown && Player.Top + Player.Height < this.ClientSize.Height)
             {
-                Player.Top += playerSpeed;
+                Player.Top += PlayerSpeed;
             }
-
-            if(goUp && Player.Top > 0)
+            if (goUp && Player.Top > 0)
             {
-                Player.Top -= playerSpeed;
+                Player.Top -= PlayerSpeed;
             }
-
-
             CheckCollision(Ball, Player, Player.Right + 5);
             CheckCollision(Ball, Computer, Computer.Left - 35);
-
-            if(computerScore > 5)
+            if (ComputerScore > 5)
             {
                 GameOver("Sorry you lost the game");
             }
-            else if(playerScore > 5)
+            else if (PlayerScore > 5)
             {
-                GameOver("You won this gmae");
+                GameOver("You Won this game");
             }
-            
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
@@ -118,29 +112,26 @@ namespace csharp_net_forms_pong
 
         private void CheckCollision(PictureBox PicOne, PictureBox PicTwo, int offset)
         {
-            if(PicOne.Bounds.IntersectsWith(PicTwo.Bounds))
+            if (PicOne.Bounds.IntersectsWith(PicTwo.Bounds))
             {
                 PicOne.Left = offset;
-
-                int x = i[rand.Next(i.Length)];
-                int y = i[rand.Next(i.Length)];
-
-                if(ballXSpeed < 0)
+                int x = j[rand.Next(j.Length)];
+                int y = j[rand.Next(j.Length)];
+                if (BallXspeed < 0)
                 {
-                    ballXSpeed = x;
+                    BallXspeed = x;
                 }
                 else
                 {
-                    ballXSpeed = -x;
+                    BallXspeed = -x;
                 }
-
-                if(ballYSpeed < 0)
+                if (BallYspeed < 0)
                 {
-                    ballYSpeed = -y;
+                    BallYspeed = -y;
                 }
                 else
                 {
-                    ballYSpeed = y;
+                    BallYspeed = y;
                 }
             }
         }
@@ -148,12 +139,27 @@ namespace csharp_net_forms_pong
         private void GameOver(string message)
         {
             GameTimer.Stop();
-            MessageBox.Show(message, "");
-            computerScore = 0;
-            playerScore = 0;
-            ballXSpeed = ballYSpeed = 4;
-            computerSpeedChange = 50;
+            MessageBox.Show(message, "Moo Says: ");
+            ComputerScore = 0;
+            PlayerScore = 0;
+            BallXspeed = BallYspeed = 4;
+            Computer_speed_change = 50;
             GameTimer.Start();
+        }
+
+        private void Computer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ball_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

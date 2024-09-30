@@ -41,29 +41,37 @@
             // Player
             // 
             Player.BackColor = SystemColors.ControlLight;
+            Player.Image = Properties.Resources.player;
             Player.Location = new Point(28, 144);
             Player.Name = "Player";
             Player.Size = new Size(30, 120);
+            Player.SizeMode = PictureBoxSizeMode.StretchImage;
             Player.TabIndex = 0;
             Player.TabStop = false;
             // 
             // Computer
             // 
             Computer.BackColor = SystemColors.ControlLight;
+            Computer.Image = Properties.Resources.computer;
             Computer.Location = new Point(746, 144);
             Computer.Name = "Computer";
             Computer.Size = new Size(30, 120);
+            Computer.SizeMode = PictureBoxSizeMode.StretchImage;
             Computer.TabIndex = 1;
             Computer.TabStop = false;
+            Computer.Click += Computer_Click;
             // 
             // Ball
             // 
             Ball.BackColor = SystemColors.ControlLight;
+            Ball.Image = Properties.Resources.ball;
             Ball.Location = new Point(376, 181);
             Ball.Name = "Ball";
             Ball.Size = new Size(30, 30);
+            Ball.SizeMode = PictureBoxSizeMode.StretchImage;
             Ball.TabIndex = 2;
             Ball.TabStop = false;
+            Ball.Click += Ball_Click;
             // 
             // GameTimer
             // 
@@ -74,13 +82,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDarkDark;
+            BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(800, 450);
             Controls.Add(Ball);
             Controls.Add(Computer);
             Controls.Add(Player);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             KeyDown += KeyIsDown;
             KeyUp += KeyIsUp;
             ((System.ComponentModel.ISupportInitialize)Player).EndInit();
